@@ -25,7 +25,7 @@ class HttpRouter():
 
         response = self.session.get('http://%s/' % self.host, headers=headers, verify=False)
 
-        #print(response.text)
+
     
     def getAuthParm(self):
 
@@ -75,8 +75,7 @@ class HttpRouter():
         self.isLogined = 0
         self.isBusy = 0
         self.ret = 0
-
-        #print(response.text)
+        
     
     def login(self, username="admin", password="admin"):
 
@@ -108,6 +107,9 @@ class HttpRouter():
 
         response = self.session.get('http://%s/cgi/login' % self.host, headers=headers, params=params, verify=False)
 
+        if "ret=0" in response.text:
+            return True
+        return False
 
     def pos_login_i(self):
 

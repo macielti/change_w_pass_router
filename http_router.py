@@ -6,7 +6,7 @@ import time
 
 class HttpRouter():
 
-    def __init__(self, host="192.168.4.1"):
+    def __init__(self, host="192.168.0.1"):
         self.host = host
         self.session = Session()
         self.s = None

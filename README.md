@@ -13,7 +13,7 @@ Inicie o servidor nodejs:
 No arquivo http_router:
 - Altere os parâmetros de login e senha do roteador no método `HttpRouter.change_pass('admin', 'admin')`.
 - Altere também a nova senha da rede `HttpRouter.change_pass('new password')`.
-- Você também pode alterar o endereço de IP do roteador momento de instanciar a classe HttpRouter.
+- Você também pode alterar o endereço de IP do roteador momento de instanciar a classe HttpRouter, o padrão é `192.168.0.1`.
 
 Execute o script principal: `python3 http_router.py`
 Aguarde o final da execução do script e a senha da rede sem fio estará alterada.

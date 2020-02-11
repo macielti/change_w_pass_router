@@ -13,7 +13,7 @@ class HttpRouter():
 
         ###
         headers = {
-            'Host': '192.168.4.1',
+            'Host': self.host,
             'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0',
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
             'Accept-Language': 'en-US,en;q=0.5',
@@ -23,7 +23,7 @@ class HttpRouter():
             'Upgrade-Insecure-Requests': '1',
         }
 
-        response = self.session.get('http://192.168.4.1/', headers=headers, verify=False)
+        response = self.session.get('http://%s/' % self.host, headers=headers, verify=False)
 
         #print(response.text)
     
@@ -31,19 +31,19 @@ class HttpRouter():
 
         ###
         headers = {
-            'Host': '192.168.4.1',
+            'Host': self.host,
             'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0',
             'Accept': '*/*',
             'Accept-Language': 'en-US,en;q=0.5',
             'Accept-Encoding': 'gzip, deflate',
-            'Origin': 'http://192.168.4.1',
+            'Origin': 'http://%s' % self.host,
             'DNT': '1',
             'Connection': 'close',
-            'Referer': 'http://192.168.4.1/',
+            'Referer': 'http://%s/' % self.host,
             'Content-Length': '0',
         }
 
-        response = self.session.get('http://192.168.4.1/cgi/getParm', headers=headers, verify=False)
+        response = self.session.get('http://%s/cgi/getParm' % self.host, headers=headers, verify=False)
 
         self.userSetting = 1
         self.ret = 0
@@ -58,19 +58,19 @@ class HttpRouter():
     def getBusy(self):
 
         headers = {
-            'Host': '192.168.4.1',
+            'Host': self.host,
             'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0',
             'Accept': '*/*',
             'Accept-Language': 'en-US,en;q=0.5',
             'Accept-Encoding': 'gzip, deflate',
-            'Origin': 'http://192.168.4.1',
+            'Origin': 'http://%s' % self.host,
             'DNT': '1',
             'Connection': 'close',
-            'Referer': 'http://192.168.4.1/',
+            'Referer': 'http://%s/' % self.host,
             'Content-Length': '0',
         }
 
-        response = self.session.get('http://192.168.4.1/cgi/getBusy', headers=headers, verify=False)
+        response = self.session.get('http://%s/cgi/getBusy' % self.host, headers=headers, verify=False)
 
         self.isLogined = 0
         self.isBusy = 0
@@ -87,15 +87,15 @@ class HttpRouter():
         
 
         headers = {
-            'Host': '192.168.4.1',
+            'Host': self.host,
             'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0',
             'Accept': '*/*',
             'Accept-Language': 'en-US,en;q=0.5',
             'Accept-Encoding': 'gzip, deflate',
-            'Origin': 'http://192.168.4.1',
+            'Origin': 'http://%s' % self.host,
             'DNT': '1',
             'Connection': 'close',
-            'Referer': 'http://192.168.4.1/',
+            'Referer': 'http://%s/' % self.host,
             'Content-Length': '0',
         }
 
@@ -106,23 +106,23 @@ class HttpRouter():
             ('LoginStatus', '0'),
         )
 
-        response = self.session.get('http://192.168.4.1/cgi/login', headers=headers, params=params, verify=False)
+        response = self.session.get('http://%s/cgi/login' % self.host, headers=headers, params=params, verify=False)
 
 
     def pos_login_i(self):
 
         headers = {
-            'Host': '192.168.4.1',
+            'Host': self.host,
             'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0',
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
             'Accept-Language': 'en-US,en;q=0.5',
             'Accept-Encoding': 'gzip, deflate',
             'Connection': 'close',
-            'Referer': 'http://192.168.4.1/',
+            'Referer': 'http://%s/' % self.host,
             'Upgrade-Insecure-Requests': '1',
         }
 
-        response = self.session.get('http://192.168.4.1/', headers=headers, verify=False)
+        response = self.session.get('http://%s/' % self.host, headers=headers, verify=False)
 
         start = response.text.find("token=")
         end = response.text.find('"', start+7)

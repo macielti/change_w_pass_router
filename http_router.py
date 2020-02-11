@@ -133,8 +133,17 @@ class HttpRouter():
 
     def change_pass(self, passwd):
 
-        command = "./change_pass.sh %s %s %s" % (self.token, self.session.cookies.values()[0], passwd)
-        print(command)
+        # change script
+        os.system("sed -i 's/pwd/%s/g' change_pass.sh" % passwd)
+
+        command = "./change_pass.sh %s %s" % (self.token, self.session.cookies.values()[0])
+        os.system("bash "+command)
+
+        # deschange
+        os.system("sed -i 's/%s/pwd/g' change_pass.sh" % passwd)
+
+        print("Senha alterada com sucesso.")
+        #print(command)
 
 if __name__ == "__main__":
     http = HttpRouter()
@@ -142,4 +151,4 @@ if __name__ == "__main__":
     http.getBusy()
     http.login("admin", "admin")
     http.pos_login_i()
-    http.change_pass("testando")
+    http.change_pass("oláMeuChapa")

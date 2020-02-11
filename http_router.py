@@ -136,7 +136,7 @@ class HttpRouter():
         # change script
         os.system("sed -i 's/pwd/%s/g' change_pass.sh" % passwd)
 
-        command = "./change_pass.sh %s %s" % (self.token, self.session.cookies.values()[0])
+        command = "./change_pass.sh %s %s %s" % (self.token, self.session.cookies.values()[0], self.host)
         os.system("bash "+command)
 
         # deschange
@@ -151,4 +151,4 @@ if __name__ == "__main__":
     http.getBusy()
     http.login("admin", "admin")
     http.pos_login_i()
-    http.change_pass("oláMeuChapa")
+    http.change_pass("olaMeuChapa")
